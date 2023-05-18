@@ -3,12 +3,14 @@
 void
 selection_sort(int *array, size_t size)
 {
-	size_t i, j, temp, min_indx;
+	size_t i, j, min_indx;
+	int temp;
 
-	if (array == NULL)
+
+	if (array == NULL || size < 2)
 		return;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
 		min_indx = i;
 		for (j = i + 1; j < size; j++)
@@ -16,13 +18,13 @@ selection_sort(int *array, size_t size)
 			if (array[j] < array[min_indx])
 				min_indx = j;
 		}
-		if (min_indx != i)
+		if (array[min_indx] != array[i])
 		{
 			temp = array[min_indx];
 			array[min_indx] = array[i];
 			array[i] = temp;
+			print_array(array, size);
 		}
-		print_array(array, size);
 	}
 }
 
